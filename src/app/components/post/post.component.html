@@ -1,0 +1,50 @@
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">devTask</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link">{{ username }}</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- MAINBODY -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <form [formGroup]="postform" (ngSubmit)="createNewPost()">
+          <div class="form-group">
+            <label for="comment">Create new post:</label>
+            <textarea class="form-control" rows="2" id="comment" formControlName="newPost">
+                  </textarea>
+          </div>
+          <button class="btn btn-dark float-right" type="reset" (click)="onReset()">Reset</button>
+          <button class="btn btn-primary float-right mr-2" [disabled]="postform.invalid">Post</button>
+        </form>
+        <h3>Recent posts</h3>
+        <div *ngFor="let posts of posts" class="mb-1">
+          <h4>{{ posts.postCreatedUser }} <span
+              class="badge badge-light custom">{{ posts.postTimeAndDate | date:'medium' }} </span></h4>
+          <div class="card">
+            <div class="card-body">
+              <p>{{ posts.postData}}</p>
+              <div *ngIf="posts.postCreatedUser == username; else elseBlock"></div>
+              <!-- <ng-template #elseBlock>Content to rendesr when condition is false.</ng-template> [ngClass]="checkLiked(posts.id)" -->
+              <ng-template #elseBlock><button id="post_{{ posts.id }}" 
+                  class="btn btn-light btn-sm mr-2 _post" (click)="likePost(posts.id)"><i class="fas fa-thumbs-up"></i>
+                  Like <span class="badge badge-secondary">{{ posts.likedBy.length  }}</span></button></ng-template>
+              <button type="button" *ngIf="posts.postCreatedUser == username" class="btn btn-outline-danger btn-sm float-right"
+                (click)="deletePost(posts.id)">Delete <i class="fas fa-trash-alt"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,41 @@
+{
+  "authentication": [
+    {
+      "userId": "147qaz",
+      "username": "skandula",
+      "password": "Srinivas.1"
+    },
+    {
+      "userId": "258wsx",
+      "username": "sandeep",
+      "password": "test@123"
+    },
+    {
+      "userId": "369edc",
+      "username": "kiran",
+      "password": "test@123"
+    },
+    {
+      "userId": "789rfv",
+      "username": "chaithanya",
+      "password": "test@123"
+    },
+    {
+      "userId": "789rfv",
+      "username": "mounika",
+      "password": "test@123"
+    }
+  ],
+  "posts": [
+    {
+      "postData": "How r u all feeling cool with angular",
+      "postTimeAndDate": "Sat Nov 02 2019 15:14:48 GMT+0530 (India Standard Time)",
+      "postCreatedUser": "skandula",
+      "likedBy": [
+        "mounika",
+        "sandeep"
+      ],
+      "id": 2
+    }
+  ]
+}
